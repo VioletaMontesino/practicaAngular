@@ -1,0 +1,153 @@
+<div class="card mt-5">
+  <div class="card-body">
+      <form novalidate #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+         
+          <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="userService.selectedUser.$key">
+
+          <div class="form-group">
+            <input 
+              type="text"
+              class="form-control"
+              name="nombre"
+              required
+              minlength="3"
+              #nombre="ngModel"
+              [(ngModel)]="userService.selectedUser.nombre"
+              placeholder="Nombre"
+              >
+          </div>
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+              class="alert alert-danger">
+            <div *ngIf="nombre.errors.required">
+              El nombre es un campo obligatorio.
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              El nombre debe de tener al menos 3 caracteres.
+            </div>
+          </div>
+
+          <div class="form-group">
+              <input 
+                type="text"
+                class="form-control"
+                name="apellidos"
+								required
+								minlength="3"
+                #apellidos="ngModel"
+                [(ngModel)]="userService.selectedUser.apellidos"
+                placeholder="Apellidos"
+                >
+					</div>
+					<div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)"
+              class="alert alert-danger">
+            <div *ngIf="apellidos.errors.required">
+              El apellido es un campo obligatorio.
+            </div>
+            <div *ngIf="apellidos.errors.minlength">
+              El apellido debe de tener al menos 3 caracteres.
+            </div>
+          </div>
+          <div class="form-group">
+            <input 
+              type="number"
+              class="form-control"
+              name="edad"
+							required
+							min="0"
+							max="125"
+              #edad="ngModel"
+              [(ngModel)]="userService.selectedUser.edad"
+              placeholder="Edad"
+              >
+          </div>
+					<div *ngIf="edad.invalid && (edad.dirty || edad.touched)"
+              class="alert alert-danger">
+            <div *ngIf="edad.errors.required">
+              La edad es un campo obligatorio.
+            </div>
+            <div *ngIf="edad.errors.min">
+              La edad debe ser mayor de 0.
+            </div>
+						<div *ngIf="edad.errors.max">
+              La edad debe ser menor de 125.
+            </div>
+          </div>
+          <div class="form-group">
+            <input 
+              type="string"
+              class="form-control"
+              name="dni"
+							required
+							minlength="9"
+							maxlength="9"
+              #dni="ngModel"
+              [(ngModel)]="userService.selectedUser.dni"
+              placeholder="DNI"
+              >
+          </div>
+					<div *ngIf="dni.invalid && (dni.dirty || dni.touched)"
+              class="alert alert-danger">
+            <div *ngIf="dni.errors.required">
+              El DNI es un campo obligatorio.
+            </div>
+            <div *ngIf="dni.errors.minlength">
+              El DNI debe tener 9 caracteres.
+            </div>
+						<div *ngIf="dni.errors.maxLength">
+              El DNI debe tener 9 caracteres.
+            </div>
+          </div>	
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Cumpleaños</span>
+              </div>
+              <input 
+                type="date"
+                class="form-control"
+                name="cumpleanos"
+                #cumpleanos="ngModel"
+                [(ngModel)]="userService.selectedUser.cumpleanos"
+                placeholder="Cumpleaños"
+                >
+            </div>
+          </div>
+          <div class="form-group">
+            <input 
+              type="string"
+              class="form-control"
+              name="colorFavorito"
+							required
+							minlength="3"
+              #colorFavorito="ngModel"
+              [(ngModel)]="userService.selectedUser.colorFavorito"
+              placeholder="Color Favorito"
+              >
+          </div>
+					<div *ngIf="colorFavorito.invalid && (colorFavorito.dirty || colorFavorito.touched)"
+              class="alert alert-danger">
+            <div *ngIf="colorFavorito.errors.required">
+              El color es un campo obligatorio.
+            </div>
+            <div *ngIf="colorFavorito.errors.minlength">
+              El color debe de tener al menos 3 caracteres.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" name="sexo"  [(ngModel)]="userService.selectedUser.sexo" >
+              <option *ngFor="let sex of sexo" [ngValue]="sex.name">{{sex.name}}</option>
+            </select>
+          </div>   
+          
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-plus-circle"></i> Registrar Usuario
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="resetForm(userForm)">
+                <i class="fas fa-sync-alt"></i> Resetear
+            </button>
+          </div>
+        </form>
+  </div>
+</div>

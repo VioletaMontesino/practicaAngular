@@ -1,0 +1,23 @@
+.card-body{
+    background-color: #343a40;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+table {
+    font-size: small;
+}
+tbody{
+    background-color: rgb(204, 231, 231);
+    border: 3px double white;
+
+}
+th {
+    border: 1px solid black;
+}
+td {
+    border: 1px solid gray;
+}
+
+h5 {
+    color: white;
+}

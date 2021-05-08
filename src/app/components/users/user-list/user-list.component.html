@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="text-center">
+      Lista de Usuarios
+    </h5>
+    <table class="table table-sm table-hover">
+      <tbody>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>DNI</th>
+          <th>F. Nac</th>
+          <th>Color</th>
+          <th>Sexo</th>
+        </tr>
+        <tr *ngFor="let user of userList">
+          <td>{{user.nombre}} {{user.apellidos}}</td>
+          <td>{{user.edad}}</td>
+          <td>{{user.dni}}</td>
+          <td>{{user.cumpleanos}}</td>
+          <td>{{user.colorFavorito}}</td>
+          <td>{{user.sexo}}</td>
+          <td>
+            <a class="btn btn-secondary text-white" (click)="onEdit(user)">
+                <i class="far fa-edit"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-danger text-white" (click)="onDelete(user.$key)">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

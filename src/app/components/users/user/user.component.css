@@ -1,0 +1,9 @@
+.card-body{
+    background-color: #343a40;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.card {
+    margin-top:0rem !important;
+}
